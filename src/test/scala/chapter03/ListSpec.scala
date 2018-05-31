@@ -94,4 +94,24 @@ class ListSpec extends FlatSpec with Matchers {
       dropWhile(l, (x: Int) => x < 0)
     }
   }
+
+  "init" should "return Nil if the list is empty" in {
+    assertResult(Nil) {
+      init(Nil)
+    }
+  }
+
+  it should "return Nil if the list has one element" in {
+    val l = Cons(1, Nil)
+    assertResult(Nil) {
+      init(l)
+    }
+  }
+
+  it should "return everything but the last element for lists of length greater than 1" in {
+    val l = Cons(1, Cons(2, Cons(3, Nil)))
+    assertResult(Cons(1, Cons(2, Nil))) {
+      init(l)
+    }
+  }
 }
