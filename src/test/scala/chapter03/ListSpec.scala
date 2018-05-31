@@ -52,4 +52,26 @@ class ListSpec extends FlatSpec with Matchers {
       setHead(42, l)
     }
   }
+
+  "drop" should "return Nil if the list is empty" in {
+    assertResult(Nil) {
+      drop(Nil, 0)
+    }
+    assertResult(Nil) {
+      drop(Nil, 1)
+    }
+  }
+
+  it should "return Nil if you drop with n = l.size" in {
+    assertResult(Nil) {
+      drop(Cons(1, Cons(2, Cons(3, Nil))), 3)
+    }
+  }
+
+  it should "return the remainder of the list if the list if n < l.size" in {
+    val l = Cons(1, Cons(2, Cons(3, Nil)))
+    assertResult(Cons(3, Nil)) {
+      drop(l, 2)
+    }
+  }
 }

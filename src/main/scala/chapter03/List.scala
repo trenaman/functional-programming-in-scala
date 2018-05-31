@@ -29,4 +29,17 @@ object List {
   }
 
   def setHead[A](h: A, l: List[A]): List[A] = Cons(h, l)
+
+  def drop[A](l: List[A], n: Int): List[A] = {
+    def loop[A](iter: Int, as: List[A]): List[A] = {
+      if (iter == n) {
+        as
+      } else {
+        loop(iter + 1, tail(as))
+      }
+
+    }
+
+    loop(0, l)
+  }
 }
