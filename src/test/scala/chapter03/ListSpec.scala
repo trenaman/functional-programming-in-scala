@@ -74,4 +74,24 @@ class ListSpec extends FlatSpec with Matchers {
       drop(l, 2)
     }
   }
+
+  "dropWhile" should "return Nil when list is empty" in {
+    assertResult(Nil) {
+      dropWhile(Nil, (x: Int) => true)
+    }
+  }
+
+  it should "remove elements from head while they match the predicate" in {
+    val l = Cons(1, Cons(2, (Cons(3, Cons(2, Cons(1, Nil))))))
+    assertResult(Cons(3, Cons(2, Cons(1, Nil)))) {
+      dropWhile(l, (x: Int) => x < 3)
+    }
+  }
+
+  it should "leave list unchanged if first element does not match predicate" in {
+    val l = Cons(1, Cons(2, Nil))
+    assertResult(l) {
+      dropWhile(l, (x: Int) => x < 0)
+    }
+  }
 }
