@@ -20,4 +20,23 @@ class ListSpec extends FlatSpec with Matchers {
     }
   }
 
+  "tail" should "return Nil for empty list" in {
+    assertResult(Nil) {
+      tail(Nil)
+    }
+  }
+
+  it should "return Nil for list of length 1" in {
+    assertResult(Nil) {
+      tail(Cons(1, Nil))
+    }
+  }
+
+  it should "return the tail for longer lists" in {
+    val t = Cons(2, Cons(3, Nil))
+    val l = Cons(1, t)
+    assertResult(t) {
+      tail(l)
+    }
+  }
 }
