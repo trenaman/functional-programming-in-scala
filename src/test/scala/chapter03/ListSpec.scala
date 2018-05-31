@@ -39,4 +39,17 @@ class ListSpec extends FlatSpec with Matchers {
       tail(l)
     }
   }
+
+  "setHead" should "return a single element list if applied on Nil" in {
+    assertResult(Cons(1, Nil)) {
+      setHead(1, Nil)
+    }
+  }
+
+  it should "insert the new element at the head of the list" in {
+    val l = Cons(1, Cons(2, Cons(3, Nil)))
+    assertResult(Cons(42, l)) {
+      setHead(42, l)
+    }
+  }
 }
