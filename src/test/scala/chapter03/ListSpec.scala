@@ -77,7 +77,7 @@ class ListSpec extends FlatSpec with Matchers {
 
   "dropWhile" should "return Nil when list is empty" in {
     assertResult(Nil) {
-      dropWhile(Nil, (x: Int) => true)
+      dropWhile(Nil, (_: Int) => true)
     }
   }
 
